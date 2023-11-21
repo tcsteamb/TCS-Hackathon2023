@@ -6,9 +6,9 @@ The code should import necessary modules from Cucumber, Playwright, and a custom
 Set the default timeout to 2 minutes.
 Implement the following Cucumber steps:
 User navigates to the application.
-User clicks on the login link using this selector "Selector1"
-User enters the username using this selector "Selector2"
-User enters the password using this selector "Selector3"
+User clicks on the login
+User enters the username
+User enters the password
 User clicks on the login button.
 Verify that login is successful.
 Verify that login fails.
@@ -17,10 +17,9 @@ Note:
 Assume the existence of a fixture object with a page property representing the Playwright page and a logger property for logging.
 Use the provided Cucumber and Playwright modules.
 
-the selector list is:
-| Selector | xpath |
+the selector list to be replaced is here:
+| Selector | Xpath |
 | Selector1 | select1 |
 | Selector2 | select2 |
 | Selector3 | select3 |
 
-replace each selector with the equivalent list using the xpath value 

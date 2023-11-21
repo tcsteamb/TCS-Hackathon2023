@@ -136,11 +136,11 @@ Conduct various testing phases, including user testing.
 
 ```mermaid
 gantt
-    title Project Timeline
+    title AI-Tester
     dateFormat  YYYY-MM-DD
     section Planning
-    Requirements-Gathering         :done, 2023-01-01, 1w
-    Design-Phase                   :done, 2023-01-02, 2w
+    Requirements-Gathering         :active, 2023-01-01, 1w
+    Design-Phase                   :active, 2023-01-02, 2w
     section Implementation
     UI-Implementation              :active, 2023-01-04, 4w
     Backend-Implementation         :active, 2023-01-04, 6w

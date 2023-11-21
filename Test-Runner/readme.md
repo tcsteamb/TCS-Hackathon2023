@@ -34,7 +34,6 @@ A test runner based on TypeScript and BDD (Behavior-Driven Development) is a too
 
 ## Project structure
 
-- .github -> yml file to execute the tests in GitHub Actions
 - src -> Contains all the features & Typescript code
 - test-results -> Contains all the reports related file
 
@@ -78,4 +77,3 @@ A test runner based on TypeScript and BDD (Behavior-Driven Development) is a too
 1. `package.json` -> Contains all the dependencies
 1. `src\helper\auth` -> Storage state (Auth file)
 1. `src\helper\util` -> Read test data from json & logger
-

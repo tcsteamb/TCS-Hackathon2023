@@ -21,6 +21,7 @@ This project was created for TCS Hackatton 2023
 - Typescript
 - Next
 - Tailwind
+- Playwright
 
 ### Backend
 

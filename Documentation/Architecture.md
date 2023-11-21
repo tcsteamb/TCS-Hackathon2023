@@ -139,21 +139,20 @@ gantt
     title Project Timeline
     dateFormat  YYYY-MM-DD
     section Planning
-    Requirements Gathering         :done, 2023-01-01, 1w
-    Design Phase                   :done, 2023-01-02, 2w
+    Requirements-Gathering         :done, 2023-01-01, 1w
+    Design-Phase                   :done, 2023-01-02, 2w
     section Implementation
-    UI Implementation               :active, 2023-01-04, 4w
-    Backend Implementation         :active, 2023-01-04, 6w
-    OpenAI Integration              :active, after UI Implementation, 3w
-    Test Case Storage               :active, after UI Implementation, 2w
-    TypeScript Code Generation      :active, after Backend Implementation, 4w
-    Execution Engine                :active, after Backend Implementation, 4w
+    UI-Implementation              :active, 2023-01-04, 4w
+    Backend-Implementation         :active, 2023-01-04, 6w
+    OpenAI-Integration             :active, 3w
+    Test-Case-Storage              :active, 2w
+    TypeScript-Code-Generation     :active, 4w
+    Execution-Engine               :active, 4w
     section Testing
-    Testing                         :active, after UI Implementation, 2w
+    Testing                        :active, 2w
     section Documentation
-    Documentation                   :active, after Testing, 1w
+    Documentation                  :active, 1w
     section Deployment
-    Deployment                      :active, after Documentation, 1w
-    section Feedback
-    Feedback and Iteration          :active, after Deployment, ongoing
+    Deployment                     :active, 1w
+    Feedback-and-Iteration         :active, ongoing
 ```

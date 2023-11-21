@@ -24,18 +24,3 @@ the selector list is:
 | Selector3 | select3 |
 
 replace each selector with the equivalent list using the xpath value 
-
-
-
-
-$0.0010 per 1k input token
-$0.0020 per 1k ouput token
-
-274 for this prompt
-665 for asnwer
-
-
-0.0030 per question and asnwer based on 1k tokesn in and out
-
-$0.274
-

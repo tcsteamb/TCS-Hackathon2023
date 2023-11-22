@@ -28,11 +28,10 @@ Feature: Basic Search for Financial Instruments
   @invalid @basic-search
   Scenario Outline: Basic Search by Invalid ISIN Code
     When I search with ISIN code "<isin_code>"
-    Then the system should not find any records
+    Then the system should display an error message "<error_message>"
 
     Examples:
-      | isin_code |
-      | NoValid   |
-      | Null      |
+      | isin_code       | error_message                                                                                             |
+      | abcd23456745    | There are no EA records which meet your search criteria. Please refine your query.                           |
 
 Give me the PageObject and PageSteps

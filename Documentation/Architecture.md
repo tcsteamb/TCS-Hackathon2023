@@ -183,9 +183,18 @@ gantt
 
 - Time-to-Market Impact: Evaluate the impact of the project's time-to-market on its overall success and relevance.
 
-- Legal and Ethical Feasibility:
+- Legal Feasibility: GDPR compliance, to avoid expose data and processes on a external LLM 
 
 - Compliance: Ensure that the project complies with legal and ethical standards, especially concerning data privacy and the use of AI technologies.
 
 ### Security Feasibility
+
+- 
+
+- 
+
+- 
+
+
+
 

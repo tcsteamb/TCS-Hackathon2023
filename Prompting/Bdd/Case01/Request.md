@@ -8,6 +8,5 @@ As a user, who is interested in financial information and securities. They visit
 | AT0000A20DY7   | Name: Erste Group Bank AG |
 
 2. Invalid ISIN Code samples    
-| ISIN Code | 
-| NoValid |
-| Null |
+| isin_code    | error_message                            |
+| abcd23456745 | There are no EA records which meet your search criteria. Please refine your query.       |

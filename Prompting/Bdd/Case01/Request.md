@@ -4,11 +4,11 @@ As a user, who is interested in financial information and securities. They visit
 
 1. Valid ISIN Code samples
 | ISIN Code | 
-| Valor 1-1 |
-| Valor 2-1 |
-| Valor 3-1 |
+| XS1877595444 |
+| EU000A1G0D70 |
+| AT0000A20DY7 |
 
 2. Invalid ISIN Code samples    
 | ISIN Code | 
-| NoValid-1 |
-| NoValid-2 |
+| NoValid |
+| Null |

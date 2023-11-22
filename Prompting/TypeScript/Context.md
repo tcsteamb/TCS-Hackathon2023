@@ -42,13 +42,13 @@ export default class basicSearchPage {
         this.page.click(this.Elements.searchBtn);
     }
 
-    async validaSearch(result: string) {
+    async validSearch(result: string) {
         const toast = this.page.locator(this.Elements.results);
         await expect(toast).toBeVisible();
         await expect(toast).toHaveText("result");        
     }
 
-    async invalidtSearch() {
+    async invalidSearch() {
         const toast = this.page.locator(this.Elements.results);
         await expect(toast).toBeVisible();
         await expect(toast).toHaveText("There are no EA records which meet your search criteria. Please refine your query.");        
@@ -83,13 +83,13 @@ export default class basicSearchPage {
         this.page.click(this.Elements.searchBtn);
     }
 
-    async validaSearch(result: string) {
+    async validSearch(result: string) {
         const toast = this.page.locator(this.Elements.results);
         await expect(toast).toBeVisible();
         await expect(toast).toHaveText("result");        
     }
 
-    async invalidtSearch() {
+    async invalidSearch() {
         const toast = this.page.locator(this.Elements.results);
         await expect(toast).toBeVisible();
         await expect(toast).toHaveText("There are no EA records which meet your search criteria. Please refine your query.");        

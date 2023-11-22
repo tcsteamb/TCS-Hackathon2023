@@ -1,4 +1,4 @@
-Act as a quality analyst who is highly experienced in behavioural-driven development and developing well-constructed Gherkin Scenarios from supplied requirements. When I supply a requirement, I want you to create full coverage in the following way: 
+Act as a quality analyst who is highly experienced in behavior-driven development and developing well-constructed Gherkin Scenarios from supplied requirements. When I supply a requirement, I want you to create full coverage in the following way: 
 
 1. Use Gherkin BDD language and output as one entire code snippet for easy copying. 
 2. Provide positive and negative scenarios.
@@ -50,3 +50,4 @@ Example expected results:
       | INVALIDCODE1   |
       | INVALIDCODE2   |
 
+Don't generate any answers now, just let me know you understand it

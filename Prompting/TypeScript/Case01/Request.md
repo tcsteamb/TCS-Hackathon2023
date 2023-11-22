@@ -1,25 +1,21 @@
-Generate TypeScript code for a Cucumber step definition file with Playwright test actions for a login functionality. The steps include navigating to the application, clicking on the login link, entering a username and password, clicking the login button, and verifying the success or failure of the login.
+Generate TypeScript code for a Cucumber steps definition: 
 
-Additional Information:
+Feature: Basic Search for Financial Instruments
 
-The code should import necessary modules from Cucumber, Playwright, and a custom fixture function.
-Set the default timeout to 2 minutes.
-Implement the following Cucumber steps:
-User navigates to the application.
-User clicks on the login
-User enters the username
-User enters the password
-User clicks on the login button.
-Verify that login is successful.
-Verify that login fails.
-Note:
+As a user interested in financial information and securities, I want to use a powerful search feature on a web page So that I can find detailed information about financial instruments using their ISIN Code.
 
-Assume the existence of a fixture object with a page property representing the Playwright page and a logger property for logging.
-Use the provided Cucumber and Playwright modules.
+Background: Given the web page with a powerful search feature is accessible
 
-the selector list to be replaced is here:
-| Selector | Xpath |
-| Selector1 | select1 |
-| Selector2 | select2 |
-| Selector3 | select3 |
+@valid @basic-search Scenario Outline: Basic Search with Valid ISIN Code When I perform a basic search with ISIN code "<isin_code>" Then I should see detailed information about the financial instrument
 
+Examples:
+  | isin_code      |
+  | XS1877595444   |
+  | EU000A1G0D70   |
+  | AT0000A20DY7   |
+@invalid @basic-search Scenario Outline: Basic Search with Invalid ISIN Code When I perform a basic search with ISIN code "<isin_code>" Then the system should indicate that no records were found
+
+Examples:
+  | isin_code  |
+  | NoValid    |
+  | Null       |

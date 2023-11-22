@@ -1,19 +1,13 @@
 WebPage is "https://www.ecb.europa.eu/paym/html/midEA.en.html"
 
-The Elements array can be filled using the following table
-| isinCode  | input[name='ISIN_Code'] |
-| searchBtn | a[type='submit'] |
-| results   | #midSearchResult |
-| clearSearchBtn   | b['clear'] |
-
 Feature: Basic Search for Financial Instruments
 
   As a user interested in financial information and securities,
-  I want to use a powerful search feature on a web page,
+  I want to use a basic search feature on a web page,
   So that I can find detailed information about financial instruments using their ISIN Code.
 
   Background:
-    Given the web page contains a powerful search feature
+    Given the web page contains a basic search feature
 
   @valid @basic-search
   Scenario Outline: Basic Search with Valid ISIN Code

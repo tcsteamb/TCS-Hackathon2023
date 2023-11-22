@@ -21,7 +21,7 @@ export default class BasicSearchPage {
     }
 
     async searchIsinCode(isinCode: string) {
-        await this.page.type(this.Elements.isinCode, isinCode);
+        await this.page.fill(this.Elements.isinCode, isinCode);
         await this.page.click(this.Elements.searchBtn);
     }
 
@@ -38,6 +38,6 @@ export default class BasicSearchPage {
     async validateNoSearchResult() {
         const toast = this.page.locator(this.Elements.results);
         await expect(toast).toBeVisible();
-        await expect(toast).toHaveText("There are no EA records which meet your search criteria. Please refine your query.");
+        await expect(toast).toHaveText("There are no records which meet your search criteria. Please refine your query.");
     }
 }

@@ -1,47 +1,85 @@
-import { Given, When, Then } from 'cucumber';
-import { Page } from 'playwright';
-import { customFixture } from './path-to-custom-fixture-file';
 
-const timeout = 120000; // 2 minutes in milliseconds
+Based on the provided Gherkin scenarios, I'll generate the corresponding PageObject and PageSteps code.
 
-Given('User navigates to the application', async function () {
-  const { page, logger } = customFixture;
-  await page.goto('https://your-application-url', { timeout });
-  logger.info('Navigated to the application');
-});
+Here's the PageObject code:
 
-When('User clicks on the login link using {string}', async function (selector: string) {
-  const { page, logger } = customFixture;
-  await page.click(`xpath=${selector}`);
-  logger.info(`Clicked on the login link using selector: ${selector}`);
-});
+```typescript
+// basicSearchPage.ts
+import { expect, Page } from "@playwright/test";
+import PlaywrightWrapper from "../helper/wrapper/PlaywrightWrappers";
 
-When('User enters the username using {string}', async function (selector: string) {
-  const { page, logger } = customFixture;
-  await page.type(`xpath=${selector}`, 'your-username');
-  logger.info(`Entered username using selector: ${selector}`);
-});
+export default class BasicSearchPage {
+    private base: PlaywrightWrapper;
 
-When('User enters the password using {string}', async function (selector: string) {
-  const { page, logger } = customFixture;
-  await page.type(`xpath=${selector}`, 'your-password');
-  logger.info(`Entered password using selector: ${selector}`);
-});
+    constructor(private page: Page) {
+        this.base = new PlaywrightWrapper(page);
+    }
 
-When('User clicks on the login button', async function () {
-  const { page, logger } = customFixture;
-  await page.click('xpath=your-login-button-selector');
-  logger.info('Clicked on the login button');
-});
+    private Elements = {
+        isinCode: "input[name='ISIN_Code']",
+        searchBtn: "a[type='submit']",
+        results: "#midSearchResult",
+        clearSearchBtn: "b['clear']",
+    };
 
-Then('Verify that login is successful', async function () {
-  const { page, logger } = customFixture;
-  // Add assertions to verify successful login, for example, check for elements on the dashboard
-  logger.info('Login successful verification');
-});
+    async navigateToSearch() {
+        await this.base.goto("https://www.ecb.europa.eu/paym/html/midEA.en.html");
+    }
 
-Then('Verify that login fails', async function () {
-  const { page, logger } = customFixture;
-  // Add assertions to verify failed login, for example, check for error messages
-  logger.info('Login failure verification');
-});
+    async searchIsinCode(isinCode: string) {
+        await this.page.type(this.Elements.isinCode, isinCode);
+        this.page.click(this.Elements.searchBtn);
+    }
+
+    async clearSearch() {
+        this.page.click(this.Elements.clearSearchBtn);
+    }
+
+    async validateSearchResult(expectedResult: string) {
+        const resultLocator = this.page.locator(this.Elements.results);
+        await expect(resultLocator).toBeVisible();
+        await expect(resultLocator).toHaveText(expectedResult);
+    }
+
+    async validateNoRecordsFound() {
+        const resultLocator = this.page.locator(this.Elements.results);
+        await expect(resultLocator).toBeVisible();
+        await expect(resultLocator).toHaveText(
+            "There are no EA records which meet your search criteria. Please refine your query."
+        );
+    }
+}
+```
+And here's the PageSteps code:
+
+```typescript
+// basicSearchPageSteps.ts
+import { expect } from "@playwright/test";
+import BasicSearchPage from "../path-to-basicSearchPage";
+
+export default class BasicSearchPageSteps {
+    private basicSearchPage: BasicSearchPage;
+
+    constructor(private page: Page) {
+        this.basicSearchPage = new BasicSearchPage(page);
+    }
+
+    async performBasicSearchWithValidIsinCode(isinCode: string, expectedResult: string) {
+        await this.basicSearchPage.navigateToSearch();
+        await this.basicSearchPage.searchIsinCode(isinCode);
+        await this.basicSearchPage.validateSearchResult(expectedResult);
+    }
+
+    async performBasicSearchWithInvalidIsinCode(isinCode: string) {
+        await this.basicSearchPage.navigateToSearch();
+        await this.basicSearchPage.searchIsinCode(isinCode);
+        await this.basicSearchPage.validateNoRecordsFound();
+    }
+
+    async clearSearch() {
+        await this.basicSearchPage.clearSearch();
+    }
+}
+```
+
+These code snippets aim to follow your guidelines regarding simplicity, high-quality standards, and adherence to best development practices. If you have any specific preferences or further requirements, please let me know.

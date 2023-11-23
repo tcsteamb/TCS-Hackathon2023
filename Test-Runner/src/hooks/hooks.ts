@@ -14,6 +14,24 @@ BeforeAll(async function () {
     getEnv();
     browser = await invokeBrowser();
 });
+// It will trigger for not auth scenarios
+Before({ tags: "not @auth" }, async function ({ pickle }) {
+    const scenarioName = pickle.name + pickle.id
+    context = await browser.newContext({
+        recordVideo: {
+            dir: "test-results/videos",
+        },
+    });
+    await context.tracing.start({
+        name: scenarioName,
+        title: pickle.name,
+        sources: true,
+        screenshots: true, snapshots: true
+    });
+    const page = await context.newPage();
+    fixture.page = page;
+    fixture.logger = createLogger(options(scenarioName));
+});
 
 After(async function ({ pickle, result }) {
     let videoPath: string;
@@ -45,3 +63,5 @@ After(async function ({ pickle, result }) {
 AfterAll(async function () {
     await browser.close();
 })
+
+

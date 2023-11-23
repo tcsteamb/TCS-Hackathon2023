@@ -57,43 +57,33 @@ export default class basicSearchPage {
 
 Here you have a sample for The PageSteps that need to be created
 
-import { expect, Page } from "@playwright/test";
-import PlaywrightWrapper from "../helper/wrapper/PlaywrightWrappers";
+import { Given, When, Then, setDefaultTimeout } from "@cucumber/cucumber";
+import Assert from "../../helper/wrapper/assert";
+import { expect } from "@playwright/test";
+import { fixture } from "../../hooks/pageFixture";
 
-export default class basicSearchPage {
+import BasicSearchPage from "../../pages/basicSearchPage";
 
-    private base: PlaywrightWrapper;
+let basicSearchPage: BasicSearchPage;
 
-    constructor(private page: Page) {
-        this.base = new PlaywrightWrapper(page);
-    }
+Given('User navigates to the application', async function () {
+    basicSearchPage = new BasicSearchPage(fixture.page);
+    await basicSearchPage.navigateToSearch();
+});
 
-    private Elements = {
-        isinCode: "input[name='ISIN_Code']",
-        searchBtn: "a[type='submit']",
-        results: "#midSearchResult"
-    }
+When('user perform a basic search with ISIN code {string}', async function (isinCode: string) {
+    fixture.logger.info("Searching for a isinCode: " + isinCode)
 
-    async navigateToSearch() {
-        await this.base.goto("https://www.ecb.europa.eu/paym/html/midEA.en.html")
-    }
+    await basicSearchPage.searchIsinCode(isinCode);
+    await fixture.page.waitForTimeout(2000);
+});
 
-    async searchIsinCode(isinCode: string) {
-        await this.page.type(this.Elements.isinCode, isinCode);
-        this.page.click(this.Elements.searchBtn);
-    }
+Then('the system should indicate that no records were found', async function () {
+    await basicSearchPage.invalidtSearch();
+});
 
-    async validSearch(result: string) {
-        const toast = this.page.locator(this.Elements.results);
-        await expect(toast).toBeVisible();
-        await expect(toast).toHaveText("result");        
-    }
+Then('I should see detailed information about the financial instrument', async function () {
 
-    async invalidSearch() {
-        const toast = this.page.locator(this.Elements.results);
-        await expect(toast).toBeVisible();
-        await expect(toast).toHaveText("There are no EA records which meet your search criteria. Please refine your query.");        
-    }
-}
+});
 
 Don't generate any answers now, just let me know you understand it

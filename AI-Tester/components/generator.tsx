@@ -10,8 +10,8 @@ export default function Projects() {
 
   return (
     <section ref={ref} id="projects" className="scroll-mt-28 mb-28">
-      <SectionHeading>Test Generator"</SectionHeading>
-      <h2 className='mt-5'>Form Component</h2>
+      <SectionHeading>Test Generator</SectionHeading>
+      <h2><center>Form Component</center></h2>
       <FormComponent />
     </section>
   );

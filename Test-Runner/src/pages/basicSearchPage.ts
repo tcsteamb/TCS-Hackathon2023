@@ -1,43 +1,32 @@
 import { expect, Page } from "@playwright/test";
 import PlaywrightWrapper from "../helper/wrapper/PlaywrightWrappers";
 
-export default class BasicSearchPage {
 
-    private base: PlaywrightWrapper;
-
+export default class basicSearchPage {
+    private base: PlaywrightWrapper
     constructor(private page: Page) {
         this.base = new PlaywrightWrapper(page);
     }
 
     private Elements = {
-        isinCode: "input[name='ISIN_Code']",
-        searchBtn: "a[type='submit']",
-        results: "#midSearchResult",
-        clearSearchBtn: "b['clear']"
+        isinInput: "input[name='ISIN_Code']",
+        SearchButton: "button[id='midEASearchSubmit']",
+        errorMessage: "alert"
     }
 
-    async navigateToSearch() {
-        await this.base.goto("https://www.ecb.europa.eu/paym/html/midEA.en.html");
+    async navigateToSearchIsinPage() {
+        await expect(this.page).toHaveTitle("Query eligible assets (daily data)");
+    }
+    async enterUserName(ISIN: string) {
+        await this.page.getByLabel(this.Elements.isinInput).fill(ISIN);
     }
 
-    async searchIsinCode(isinCode: string) {
-        await this.page.type(this.Elements.isinCode, isinCode);
-        await this.page.click(this.Elements.searchBtn);
+    async clickSearchButton() {
+        await this.base.waitAndClick(this.Elements.SearchButton);
     }
 
-    async clearSearch() {
-        await this.page.click(this.Elements.clearSearchBtn);
+    getErrorMessage() {
+        return this.page.getByRole("alert");
     }
 
-    async validateSearchResult(expectedResult: string) {
-        const toast = this.page.locator(this.Elements.results);
-        await expect(toast).toBeVisible();
-        await expect(toast).toHaveText(expectedResult);
-    }
-
-    async validateNoSearchResult() {
-        const toast = this.page.locator(this.Elements.results);
-        await expect(toast).toBeVisible();
-        await expect(toast).toHaveText("There are no EA records which meet your search criteria. Please refine your query.");
-    }
 }

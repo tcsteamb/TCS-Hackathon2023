@@ -8,8 +8,7 @@ Act as a quality analyst who is highly experienced in behavior-driven developmen
 6. Ensure variables are added to a Gherkin 'Examples' table appropriately. 
 7. Include feature-level tags and scenario-level tags e.g., @valid, @invalid
 8. Provide feature and user story 
-9. Afterwards, suggest an appropriate name for the *.feature file and explain your work. 
-10. Do not assume any output like error messages or variables not part of the requirements. 
+9. Afterwards, suggest an appropriate name for the *.feature file and explain your work, for name it use camel case. 
 
 Example expected results:
 
